@@ -1,0 +1,42 @@
+<configuration>
+
+    <!-- Appender for general logs (stdout) -->
+    <appender name="GENERAL" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender for error logs (stderr) -->
+    <appender name="ERROR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender for device status logs (stdout) -->
+    <appender name="DEVICE_STATUS" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoder>
+            <pattern>DEVICE_STATUS: %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger for general logs -->
+    <root level="info">
+        <appender-ref ref="GENERAL"/>
+    </root>
+
+    <!-- Logger for error logs -->
+    <logger name="com.myapp.error" level="error" additivity="false">
+        <appender-ref ref="ERROR"/>
+    </logger>
+
+    <!-- Logger for device status logs -->
+    <logger name="com.myapp.device" level="info" additivity="false">
+        <appender-ref ref="DEVICE_STATUS"/>
+    </logger>
+
+</configuration>
